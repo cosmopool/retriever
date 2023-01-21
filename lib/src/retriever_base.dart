@@ -129,4 +129,22 @@ class Retriever {
     final val = map[key];
     return DateTime.tryParse(val.toString());
   }
+
+  /// To retrieve a value from a map, only if it's a Map.
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static Map getMap(dynamic key, Map map) {
+    final val = map[key];
+    if (val is Map) return val;
+
+    throw RetrieverFormatError(
+      key: key,
+      type: 'map/json',
+      found: val,
+      foundType: val.runtimeType,
+      map: map,
+    );
+  }
 }
