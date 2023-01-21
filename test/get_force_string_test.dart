@@ -6,13 +6,13 @@ import 'map_stub.dart';
 void main() {
   test(
       'SHOULD return String '
-      'WHEN value is a String', () async {
+      'WHEN value is a String', () {
     expect(Retriever.getForceString(kString, testMapStub), isA<String>());
   });
 
   test(
       'SHOULD return "null" as String '
-      'WHEN value is null', () async {
+      'WHEN value is null', () {
     expect(
       Retriever.getForceString(kNull, testMapStub),
       "null",
@@ -21,7 +21,7 @@ void main() {
 
   test(
       'SHOULD return "1" as String '
-      'WHEN value is 1', () async {
+      'WHEN value is 1', () {
     expect(
       Retriever.getForceString(kInt, testMapStub),
       "1",
@@ -30,7 +30,7 @@ void main() {
 
   test(
       'SHOULD return "1.0" as String '
-      'WHEN value is 1.0', () async {
+      'WHEN value is 1.0', () {
     expect(
       Retriever.getForceString(kDouble, testMapStub),
       "1.0",
@@ -39,7 +39,7 @@ void main() {
 
   test(
       'SHOULD return "{key: value}" as String '
-      'WHEN value is {"key": "value"}', () async {
+      'WHEN value is {"key": "value"}', () {
     expect(
       Retriever.getForceString(kMap, testMapStub),
       '{key: value}',
@@ -48,7 +48,7 @@ void main() {
 
   test(
       'SHOULD return "[1, 2]" as String '
-      'WHEN value is [1, 2]', () async {
+      'WHEN value is [1, 2]', () {
     expect(
       Retriever.getForceString(kList, testMapStub),
       "[1, 2]",
@@ -57,7 +57,7 @@ void main() {
 
   test(
       'SHOULD return "true" '
-      'WHEN value is true', () async {
+      'WHEN value is true', () {
     expect(
       Retriever.getForceString(kBool, testMapStub),
       "true",
@@ -66,7 +66,7 @@ void main() {
 
   test(
       'SHOULD return "{1, 2}" as String '
-      'WHEN value is {1, 2}', () async {
+      'WHEN value is {1, 2}', () {
     expect(
       Retriever.getForceString(kSet, testMapStub),
       "{1, 2}",
@@ -75,7 +75,7 @@ void main() {
 
   test(
       'SHOULD return a String '
-      'WHEN value is a string Date', () async {
+      'WHEN value is a string Date', () {
     expect(
       Retriever.getForceString(kStringDate, testMapStub),
       isA<String>(),
@@ -84,7 +84,7 @@ void main() {
 
   test(
       'SHOULD return "2023-01-01 00:00:00.000" as String '
-      'WHEN value is a DateTime(2023)', () async {
+      'WHEN value is a DateTime(2023)', () {
     expect(
       Retriever.getForceString(kDateTime, testMapStub),
       '2023-01-01 00:00:00.000',
