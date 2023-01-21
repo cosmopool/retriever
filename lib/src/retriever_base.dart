@@ -27,4 +27,15 @@ class Retriever {
   /// [key] can be any dynamic value
   /// [map] can be any Map<dynamic, dynamic>
   static String getForceString(dynamic key, Map map) => map[key].toString();
+
+  /// To retrieve a value from a map.
+  /// Returns the value if it's a String and null otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static String? getMaybeString(dynamic key, Map map) {
+    final val = map[key];
+    if (val.runtimeType != String) return null;
+    return val;
+  }
 }
