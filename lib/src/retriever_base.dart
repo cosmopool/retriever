@@ -21,4 +21,10 @@ class Retriever {
       map: map,
     );
   }
+
+  /// Returns [key] from [map] as a String
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static String getForceString(dynamic key, Map map) => map[key].toString();
 }
