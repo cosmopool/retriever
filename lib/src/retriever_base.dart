@@ -17,7 +17,6 @@ class Retriever {
       key: key.toString(),
       type: String,
       found: val,
-      foundType: val.runtimeType,
       map: map,
     );
   }
@@ -53,7 +52,6 @@ class Retriever {
         key: key.toString(),
         type: 'Integer',
         found: val,
-        foundType: val.runtimeType,
         map: map,
       );
     }
@@ -84,7 +82,6 @@ class Retriever {
         key: key.toString(),
         type: 'Float/Double',
         found: val,
-        foundType: val.runtimeType,
         map: map,
       );
     }
@@ -114,7 +111,6 @@ class Retriever {
         key: key.toString(),
         type: 'date',
         found: val.toString(),
-        foundType: val.runtimeType,
         map: map,
       );
     }
@@ -143,7 +139,6 @@ class Retriever {
       key: key,
       type: 'map/json',
       found: val,
-      foundType: val.runtimeType,
       map: map,
     );
   }
