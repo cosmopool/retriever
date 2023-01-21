@@ -12,9 +12,9 @@ class Retriever {
     if (val is String) return val;
 
     throw RetrieverFormatError(
-      key: key.toString(),
-      type: String,
-      found: val,
+      key: key,
+      requiredType: String,
+      foundValue: val,
       map: map,
     );
   }
@@ -47,9 +47,9 @@ class Retriever {
       return int.parse(val.toString());
     } catch (e) {
       throw RetrieverFormatError(
-        key: key.toString(),
-        type: 'Integer',
-        found: val,
+        key: key,
+        requiredType: 'Integer',
+        foundValue: val,
         map: map,
       );
     }
@@ -77,9 +77,9 @@ class Retriever {
       return double.parse(map[key].toString());
     } catch (e) {
       throw RetrieverFormatError(
-        key: key.toString(),
-        type: 'Float/Double',
-        found: val,
+        key: key,
+        requiredType: 'Float/Double',
+        foundValue: val,
         map: map,
       );
     }
@@ -106,9 +106,9 @@ class Retriever {
       return DateTime.parse(val.toString());
     } catch (e) {
       throw RetrieverFormatError(
-        key: key.toString(),
-        type: 'date',
-        found: val,
+        key: key,
+        requiredType: 'date',
+        foundValue: val,
         map: map,
       );
     }
@@ -134,9 +134,9 @@ class Retriever {
     if (val is Map) return val;
 
     throw RetrieverFormatError(
-      key: key.toString(),
-      type: 'map/json',
-      found: val,
+      key: key,
+      requiredType: 'map/json',
+      foundValue: val,
       map: map,
     );
   }
