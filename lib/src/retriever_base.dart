@@ -1,8 +1,6 @@
 import 'failures.dart';
 
-// TODO: Put public facing types in this file.
-
-/// TODO; add docstring
+/// To safely and easily retrieve values from a map.
 class Retriever {
   /// To retrieve a value from a map, only if it's a String.
   /// Throw an error otherwise.

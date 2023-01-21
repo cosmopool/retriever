@@ -1,6 +1,9 @@
 import 'package:retriever/src/utils/extensions/map_extensions.dart';
 
-/// TODO add docstring
+/// Base exception from Retriever package
+///
+/// This exception prints lots of useful and user friendly information
+/// about the error.
 class RetrieverFormatError implements Exception {
   final String key;
   final dynamic type;

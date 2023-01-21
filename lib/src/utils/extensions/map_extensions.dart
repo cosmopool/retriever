@@ -1,6 +1,8 @@
 extension MapToString on Map {
   /// Return a indented string representation of a Map instance
-  /// TODO: complete docstring
+  ///
+  /// This code is a modification of the original implementation of
+  /// toString method from Map
   String toPrettyString(
     String indent, [
     String? highlightKey,
@@ -32,7 +34,7 @@ extension MapToString on Map {
     return result.toString();
   }
 
-  /// TODO add docstring
+  /// Make a string to highlight the key that generated an error
   static String _makeHighlight(String str, String char) {
     String temp = '';
 
