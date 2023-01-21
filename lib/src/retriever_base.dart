@@ -99,4 +99,24 @@ class Retriever {
     final val = map[key];
     return double.tryParse(val.toString());
   }
+
+  /// To retrieve a value from a map, only if it's a parsable string Date.
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static DateTime getDate(dynamic key, Map map) {
+    final val = map[key];
+    try {
+      return DateTime.parse(val.toString());
+    } catch (e) {
+      throw RetrieverFormatError(
+        key: key.toString(),
+        type: 'date',
+        found: val.toString(),
+        foundType: val.runtimeType,
+        map: map,
+      );
+    }
+  }
 }
