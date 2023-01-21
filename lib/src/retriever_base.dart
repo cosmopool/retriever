@@ -11,7 +11,7 @@ class Retriever {
   /// [map] can be any Map<dynamic, dynamic>
   static String getString(dynamic key, Map map) {
     final val = map[key];
-    if (val.runtimeType == String) return val;
+    if (val is String) return val;
 
     throw RetrieverFormatError(
       key: key.toString(),
@@ -35,7 +35,7 @@ class Retriever {
   /// [map] can be any Map<dynamic, dynamic>
   static String? getMaybeString(dynamic key, Map map) {
     final val = map[key];
-    if (val.runtimeType != String) return null;
+    if (val is String) return null;
     return val;
   }
 
@@ -66,7 +66,7 @@ class Retriever {
   /// [map] can be any Map<dynamic, dynamic>
   static int? getMaybeInt(dynamic key, Map map) {
     final val = map[key];
-    if (val.runtimeType != int) return null;
+    if (val! is int) return null;
     return val;
   }
 
