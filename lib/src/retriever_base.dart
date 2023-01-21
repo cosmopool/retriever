@@ -34,8 +34,8 @@ class Retriever {
   /// [map] can be any Map<dynamic, dynamic>
   static String? getMaybeString(dynamic key, Map map) {
     final val = map[key];
-    if (val is String) return null;
-    return val;
+    if (val is String) return val;
+    return null;
   }
 
   /// To retrieve a value from a map, only if it's an Integer.
@@ -64,8 +64,8 @@ class Retriever {
   /// [map] can be any Map<dynamic, dynamic>
   static int? getMaybeInt(dynamic key, Map map) {
     final val = map[key];
-    if (val! is int) return null;
-    return val;
+    if (val is int) return val;
+    return null;
   }
 
   /// To retrieve a value from a map, only if it's Double parsable number/string.
