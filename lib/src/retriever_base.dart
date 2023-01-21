@@ -89,4 +89,14 @@ class Retriever {
       );
     }
   }
+
+  /// To retrieve a value from a map.
+  /// Returns the value if it's a Double and null otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static double? getMaybeDouble(dynamic key, Map map) {
+    final val = map[key];
+    return double.tryParse(val.toString());
+  }
 }
