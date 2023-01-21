@@ -69,4 +69,24 @@ class Retriever {
     if (val.runtimeType != int) return null;
     return val;
   }
+
+  /// To retrieve a value from a map, only if it's Double parsable number/string.
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static double getDouble(dynamic key, Map map) {
+    final val = map[key];
+    try {
+      return double.parse(map[key].toString());
+    } catch (e) {
+      throw RetrieverFormatError(
+        key: key.toString(),
+        type: 'Float/Double',
+        found: val,
+        foundType: val.runtimeType,
+        map: map,
+      );
+    }
+  }
 }
