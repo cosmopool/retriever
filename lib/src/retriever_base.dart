@@ -110,7 +110,7 @@ class Retriever {
       throw RetrieverFormatError(
         key: key.toString(),
         type: 'date',
-        found: val.toString(),
+        found: val,
         map: map,
       );
     }
@@ -136,7 +136,7 @@ class Retriever {
     if (val is Map) return val;
 
     throw RetrieverFormatError(
-      key: key,
+      key: key.toString(),
       type: 'map/json',
       found: val,
       map: map,
