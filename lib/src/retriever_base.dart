@@ -58,4 +58,15 @@ class Retriever {
       );
     }
   }
+
+  /// To retrieve a value from a map.
+  /// Returns the value if it's a Integer and null otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static int? getMaybeInt(dynamic key, Map map) {
+    final val = map[key];
+    if (val.runtimeType != int) return null;
+    return val;
+  }
 }
