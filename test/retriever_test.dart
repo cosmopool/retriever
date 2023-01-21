@@ -1,16 +1,11 @@
 import 'package:retriever/retriever.dart';
 import 'package:test/test.dart';
 
+import 'map_stub.dart';
+
 void main() {
-  group('A group of tests', () {
-    final awesome = Awesome();
-
-    setUp(() {
-      // Additional setup goes here.
-    });
-
-    test('First Test', () {
-      expect(awesome.isAwesome, isTrue);
-    });
+  test('Test if Retriever class is accessible via main module', () {
+    final getResult = Retriever.getString(kString, testMapStub);
+    expect(getResult, isA<String>());
   });
 }
