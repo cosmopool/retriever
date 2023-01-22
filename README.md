@@ -69,7 +69,7 @@ You can retrieve a string from a Map, just like that.
 If the key doesn't exist or the value is not a valid, an error will be thrown.
 The errors are very helpful and human readable, showing exactly what's going on.
 ```dart
-  // Using getString on a "int" value with throw the following error
+  // Using getString on a "int" value will throw the following error
   Retriever.getString('age', map); // 'age' is a int. error will be thrown
 
   //  RetrieverFormatError: Found invalid format when parsing key.
