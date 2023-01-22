@@ -83,8 +83,8 @@ The errors are very helpful and human readable, showing exactly what's going on.
   //                }"
 ```
 
-<!-- ## Additional information -->
-<!---->
-<!-- TODO: Tell users more about the package: where to find more information, how to  -->
-<!-- contribute to the package, how to file issues, what response they can expect  -->
-<!-- from the package authors, and more. -->
+## Additional information
+
+Feel free to [file an issue](https://github.com/cosmopool/retriever/issues/new) if you find a problem or [make pull requests](https://github.com/cosmopool/retriever/pulls).
+
+All contributions are welcome :)
