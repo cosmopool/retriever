@@ -140,4 +140,16 @@ class Retriever {
       map: map,
     );
   }
+
+  static bool getBool(dynamic key, Map map) {
+    final val = map[key];
+    if (val is bool) return val;
+
+    throw RetrieverFormatError(
+      key: key,
+      requiredType: 'boolean',
+      foundValue: val,
+      map: map,
+    );
+  }
 }
