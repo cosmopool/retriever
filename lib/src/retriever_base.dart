@@ -2,6 +2,20 @@ import 'failures.dart';
 
 /// To safely and easily retrieve values from a map.
 class Retriever {
+  static RetrieverFormatError formatError(
+    dynamic key,
+    dynamic type,
+    dynamic val,
+    Map map,
+  ) {
+    return RetrieverFormatError(
+      key: key,
+      requiredType: type.toString(),
+      foundValue: val,
+      map: map,
+    );
+  }
+
   /// To retrieve a value from a map, only if it's a String.
   /// Throw an error otherwise.
   ///
@@ -11,12 +25,7 @@ class Retriever {
     final val = map[key];
     if (val is String) return val;
 
-    throw RetrieverFormatError(
-      key: key,
-      requiredType: String,
-      foundValue: val,
-      map: map,
-    );
+    throw formatError(key, String, val, map);
   }
 
   /// Returns [key] from [map] as a String
@@ -46,12 +55,7 @@ class Retriever {
     try {
       return int.parse(val.toString());
     } catch (e) {
-      throw RetrieverFormatError(
-        key: key,
-        requiredType: 'Integer',
-        foundValue: val,
-        map: map,
-      );
+      throw formatError(key, int, val, map);
     }
   }
 
@@ -76,12 +80,7 @@ class Retriever {
     try {
       return double.parse(map[key].toString());
     } catch (e) {
-      throw RetrieverFormatError(
-        key: key,
-        requiredType: 'Float/Double',
-        foundValue: val,
-        map: map,
-      );
+      throw formatError(key, double, val, map);
     }
   }
 
@@ -105,12 +104,7 @@ class Retriever {
     try {
       return DateTime.parse(val.toString());
     } catch (e) {
-      throw RetrieverFormatError(
-        key: key,
-        requiredType: 'date',
-        foundValue: val,
-        map: map,
-      );
+      throw formatError(key, DateTime, val, map);
     }
   }
 
@@ -133,11 +127,72 @@ class Retriever {
     final val = map[key];
     if (val is Map) return val;
 
-    throw RetrieverFormatError(
-      key: key,
-      requiredType: 'map/json',
-      foundValue: val,
-      map: map,
-    );
+    throw formatError(key, Map, val, map);
+  }
+
+  static T get<T>(dynamic key, Map map) {
+    final val = map[key];
+    if (val is T) return val;
+    throw formatError(key, T, val, map);
+  }
+
+  /// To retrieve a value from a map, only if it's a List<T>.
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static List<T> getList<T>(dynamic key, Map map) {
+    final val = map[key];
+
+    final error = formatError(key, List<T>, val, map);
+    if (val is! List) throw error;
+
+    try {
+      return toList<T>(val);
+    } catch (e) {
+      throw error;
+    }
+  }
+
+  /// To retrieve a value from a map, only if it's a List and force all elements to String
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static List<String> getListForceString(dynamic key, Map map) {
+    final val = map[key];
+
+    final error = formatError(key, List<String>, val, map);
+    if (val is! List) throw error;
+
+    try {
+      return val.map((e) => e.toString()).toList();
+    } catch (e) {
+      throw error;
+    }
+  }
+
+  static List<T> toList<T>(List list) {
+    final finalList = <T>[];
+    for (var item in list) {
+      finalList.add(item as T);
+    }
+    return finalList;
+  }
+
+  /// To retrieve a value from a map.
+  /// Returns the value if it's a List and null otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static List<T>? getMaybeList<T>(dynamic key, Map map) {
+    final val = map[key];
+    if (val is! List) return null;
+
+    try {
+      return toList<T>(val);
+    } catch (e) {
+      return null;
+    }
   }
 }
