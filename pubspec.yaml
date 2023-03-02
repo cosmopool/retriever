@@ -1,6 +1,6 @@
 name: retriever
 description: Retrieve values from a Map/Json with ease and safety.
-version: 1.0.0
+version: 1.0.1
 repository: https://github.com/cosmopool/retriever
 
 environment:
