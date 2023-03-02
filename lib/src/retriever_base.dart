@@ -195,4 +195,21 @@ class Retriever {
       return null;
     }
   }
+
+  /// To retrieve a value from a map, only if it's a Bool.
+  /// Throw an error otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static bool getBool(dynamic key, Map map) {
+    final val = map[key];
+    if (val is bool) return val;
+
+    throw RetrieverFormatError(
+      key: key,
+      requiredType: bool,
+      foundValue: val,
+      map: map,
+    );
+  }
 }
