@@ -212,4 +212,15 @@ class Retriever {
       map: map,
     );
   }
+
+  /// To retrieve a value from a map, only if it's a Bool.
+  /// Returns null otherwise.
+  ///
+  /// [key] can be any dynamic value
+  /// [map] can be any Map<dynamic, dynamic>
+  static bool? getMaybeBool(dynamic key, Map map) {
+    final val = map[key];
+    if (val is bool) return val;
+    return null;
+  }
 }
