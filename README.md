@@ -1,3 +1,5 @@
+
+
 <!-- 
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
@@ -45,6 +47,7 @@ With retriever you can safely parse:
 - Double
 - Date
 - Map
+- Bool
 
 ## Getting started
 
